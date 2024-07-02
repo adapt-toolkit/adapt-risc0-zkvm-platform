@@ -206,7 +206,6 @@ unsafe extern "C" fn env_log(msg_ptr: *const u8, len: u32) {
     sys_log(msg_ptr, len as usize);
 }
 
-
 // Poseidon hash implementation
 const POSEIDON_ERR_FREED: &[u8] = b"error: poseidon_state has not been initialized or has already been freed";
 

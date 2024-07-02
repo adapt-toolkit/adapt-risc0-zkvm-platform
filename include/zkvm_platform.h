@@ -244,8 +244,10 @@ typedef struct sha256_state {
  */
 typedef uint32_t Digest[DIGEST_WORDS];
 
+
 typedef struct poseidon_state {
 } poseidon_state;
+
 
 
 
@@ -292,6 +294,7 @@ struct poseidon_state *poseidon_init(void);
 void poseidon_update(struct poseidon_state *hasher, const uint8_t* data, uint32_t len);
 void poseidon_digest(struct poseidon_state *hasher, uint8_t *out);
 void poseidon_free(struct poseidon_state *hasher);
+
 
 /**
  * Exit the zkvm, using the [sha256_state].
