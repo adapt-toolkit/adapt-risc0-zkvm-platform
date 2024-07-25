@@ -205,35 +205,3 @@ unsafe extern "C" fn env_alloc(size: usize) -> *mut c_void {
 unsafe extern "C" fn env_log(msg_ptr: *const u8, len: u32) {
     sys_log(msg_ptr, len as usize);
 }
-
-// Poseidon hash implementation
-const POSEIDON_ERR_FREED: &[u8] = b"error: poseidon_state has not been initialized or has already been freed";
-
-
-use std::boxed::Box;
-
-
-// This is a template implementation of the poseidon hash algorithm. This template is already linked to the c++ code.
-
-#[repr(C)]
-#[allow(non_camel_case_types)]
-pub struct poseidon_state {
-}
-
-#[no_mangle]
-pub extern "C" fn poseidon_init() -> *mut poseidon_state {
-    Box::into_raw(Box::new(poseidon_state {
-    }))
-}
-
-#[no_mangle]
-pub extern "C" fn poseidon_free(ptr: *mut poseidon_state) {
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn poseidon_update(ptr: *mut poseidon_state, data: *const u8, length: usize) {
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn poseidon_digest(ptr: *mut poseidon_state, out: *mut u8) {
-}
