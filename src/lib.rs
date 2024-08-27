@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
+// Modifications made by Adapt Framework Solutions LTD - vitalii@adaptframework.solutions
+// These modifications are licensed under the Adapt Framework Solutions license.
+// For details, see the LICENSE file in the root directory of this project.
+// Note: The modifications include additional custom functions at the end of this file.
+
+// Original code starts here
+
 use core::{ptr, slice};
 use std::alloc::{handle_alloc_error, Layout};
 use std::ffi::c_void;
@@ -177,6 +185,9 @@ pub unsafe extern "C" fn env_commit(hasher: *mut sha256_state, bytes_ptr: *const
     sys_write(fileno::JOURNAL, bytes_ptr, len as usize);
 }
 
+
+// The code below is added by ADAPT Framework Solutions developers
+
 /// Reads `len` bytes into buffer from the host.
 ///
 /// # Safety
@@ -185,6 +196,11 @@ pub unsafe extern "C" fn env_commit(hasher: *mut sha256_state, bytes_ptr: *const
 pub unsafe extern "C" fn env_read(bytes_ptr: *mut u8, len: u32) {
     sys_read(fileno::STDIN, bytes_ptr, len as usize);
 }
+
+// End of original code
+
+
+// Custom functions added by Adapt Framework Solutions LTD
 
 #[no_mangle]
 // TODO ideally this is c_size_t, but not stabilized (not guaranteed to be usize on all archs)

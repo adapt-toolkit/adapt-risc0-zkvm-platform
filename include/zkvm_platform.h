@@ -245,17 +245,6 @@ typedef struct sha256_state {
 typedef uint32_t Digest[DIGEST_WORDS];
 
 
-typedef struct poseidon_state {
-} poseidon_state;
-
-
-
-
-
-
-
-
-
 extern "C" {
 
 struct sha256_state *init_sha256(void);
@@ -289,12 +278,6 @@ void sha256_finalize_to(struct sha256_state *hasher, uint8_t *out);
  * This assumes the state has not already been freed or manually modified.
  */
 void sha256_free(struct sha256_state *hasher);
-
-struct poseidon_state *poseidon_init(void);
-void poseidon_update(struct poseidon_state *hasher, const uint8_t* data, uint32_t len);
-void poseidon_digest(struct poseidon_state *hasher, uint8_t *out);
-void poseidon_free(struct poseidon_state *hasher);
-
 
 /**
  * Exit the zkvm, using the [sha256_state].
